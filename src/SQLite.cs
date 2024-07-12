@@ -3326,7 +3326,7 @@ namespace SQLite
 				}
 				else if (value is DateTime) {
 					if (storeDateTimeAsTicks) {
-						SQLite3.BindInt64 (stmt, index, ((DateTime)value).Ticks);
+						SQLite3.BindInt64 (stmt, index, ((DateTime)value).ToUniversalTime().Ticks);
 					}
 					else {
 						SQLite3.BindText (stmt, index, ((DateTime)value).ToString (dateTimeStringFormat, System.Globalization.CultureInfo.InvariantCulture), -1, NegativePointer);
